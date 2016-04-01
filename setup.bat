@@ -4,11 +4,11 @@ if exist config/version.txt (@echo version.txt exists. This can be ignored) else
 powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/version.txt -OutFile config/version.txt
 )
 
-if exist config/version.txt (@echo version.txt exists. This can be ignored) else (@echo Generating config/gitlocation.txt
+if exist config/gitlocation.txt (@echo version.txt exists. This can be ignored) else (@echo Generating config/gitlocation.txt
 powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/gitlocation.txt -OutFile config/gitlocation.txt
 )
 
-if exist config/version.txt (@echo version.txt exists. This can be ignored) else (@echo Generating config/plugin.txt
+if exist config/plugin.txt (@echo version.txt exists. This can be ignored) else (@echo Generating config/plugin.txt
 powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/plugin.txt -OutFile config/plugin.txt
 )
 
