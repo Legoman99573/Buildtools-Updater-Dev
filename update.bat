@@ -44,7 +44,7 @@ if %RESULT1%==%RESULT2% (
 
     echo Generating new Files...
     @echo Buildtools.bat from v.%v2%
-    powershell -command Invoke-WebRequest -Uri https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater-Dev/master/BuildTools.bat -OutFile Buildtools.bat
+    powershell -command Invoke-WebRequest -Uri https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater-Dev/master/Buildtools.bat -OutFile Buildtools.bat
     @echo menu.bat from v.%v2%
     powershell -command Invoke-WebRequest -Uri https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater-Dev/master/menu.bat -OutFile menu.bat
     @echo plugin.bat from v.%v2%
@@ -61,7 +61,8 @@ if %RESULT1%==%RESULT2% (
     echo.
     @echo Making btuversion2.txt merge to btuversion.txt
     del /f tasks\btuversion.txt
-    ren tasks\btuversion2.txt tasks\btuversion.txt
+    del /f tasks\btuversion2.txt
+    powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/btversion.txt -OutFile tasks/btuversion.txt
     cls
     @echo Finished Updating to v.%v%
 )
