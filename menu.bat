@@ -43,7 +43,7 @@ if exist %startdir%tasks\Spigot (move %startdir%tasks\Spigot %startdir%) else (e
 if exist %startdir%tasks\work (move %startdir%tasks\work %startdir%) else (echo Folder "work" doesnt exist may be ignored)
 
 @echo running BuildTools :)
-start "Buildtools Updater v.0.14-Beta | Running Buildtools.jar" /wait tasks\run.bat
+start "Buildtools Updater v.0.14-Beta | Running Buildtools.jar" /b /wait tasks\run.bat
 @echo Moving Buildtools Folder back to its original spot
 move %startdir%apache-maven-3.2.5 %startdir%tasks\
 move %startdir%BuildData %startdir%tasks\
