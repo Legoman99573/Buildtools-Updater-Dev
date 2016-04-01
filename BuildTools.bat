@@ -5,6 +5,12 @@ set startdir=%~dp0
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
 
+if exist setup.bat (goto setup) else (goto boot)
+
+:setup
+start "Buildtools Updater v.0.14-Beta | First Run" /b /wait setup.bat
+goto boot
+
 :boot
 If exist %content% (goto boot2) else (@echo bash.exe was not found. Download, or configure gitlocation.txt
 Goto error)
