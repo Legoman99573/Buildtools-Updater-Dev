@@ -37,6 +37,8 @@ goto start
 
 :run
 cls
+@echo Warning: exiting while this is running may cause something to break, and not move buildtools files at the right time leaving a mess until you run this command again.
+@pause
 @echo getting Buildtools Ready
 if exist %startdir%tasks\apache-maven-3.2.5 (move %startdir%tasks\apache-maven-3.2.5 %startdir%) else (echo Folder "apache-maven-3.2.5" doesnt exist may be ignored)
 if exist %startdir%tasks\BuildData (move %startdir%tasks\BuildData %startdir%) else (echo Folder "BuildData" doesnt exist may be ignored)
@@ -54,6 +56,16 @@ move %startdir%Bukkit %startdir%tasks\
 move %startdir%CraftBukkit %startdir%tasks\
 move %startdir%Spigot %startdir%tasks\
 move %startdir%work %startdir%tasks\
+
+@echo Moving Server jars into folder /serverjars/
+echo.
+@echo Moving Spigot
+move spigot-*.jar %startdir%serverjars
+if exist spigot-*.jar (@echo Failed to move Spigot) else (@echo Moved Spigot service Successfully)
+echo.
+@echo Moving Craftbukkit
+move craftbukkit-*.jar %startdir%serverjars
+if exist craftbukkit-*.jar (@echo Failed to move Craftbukkit) else (@echo Moved Craftbukkit service Successfully)
 
 @echo Finished running BuildTools
 
