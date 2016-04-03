@@ -5,12 +5,15 @@ set startdir=%~dp0
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
 
+set v=
+for /f "delims=" %%i in ('type tasks\btuversion.txt') do set v=%%i
+
 if exist %content% (goto boot) else (goto error1)
 :boot
-@echo Welcome to Buildtools Updater v.0.14-Beta
+@echo Welcome to Buildtools Updater v.%v%
 :start
 cls
-start "Buildtools Updater v.0.14-Beta | Buildtools Help" /b /wait help.bat
+start "Buildtools Updater v.%v% | Buildtools Help" /b /wait help.bat
 :commanderror
 Set /P "_1=>" || Set _1=NothingChosen
 If "%_1%"=="NothingChosen" goto :commandnotfound
@@ -27,7 +30,7 @@ goto commanderror
 
 :update
 cls
-start "Buildtools Updater v.0.14-Beta | Delete Buildtools.jar" /b /wait %startdir%tasks\delbt.bat
+start "Buildtools Updater v.%v% | Delete Buildtools.jar" /b /wait %startdir%tasks\delbt.bat
 %content% --login -i -c "curl -o tasks/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
 if exist %startdir%tasks\BuildTools.jar (@echo Updated BuildTools) else (@echo An error has occured. Make sure folder has write access)
 goto start
@@ -43,7 +46,7 @@ if exist %startdir%tasks\Spigot (move %startdir%tasks\Spigot %startdir%) else (e
 if exist %startdir%tasks\work (move %startdir%tasks\work %startdir%) else (echo Folder "work" doesnt exist may be ignored)
 
 @echo running BuildTools :)
-start "Buildtools Updater v.0.14-Beta | Running Buildtools.jar" /b /wait tasks\run.bat
+start "Buildtools Updater v.%v% | Running Buildtools.jar" /b /wait tasks\run.bat
 @echo Moving Buildtools Folder back to its original spot
 move %startdir%apache-maven-3.2.5 %startdir%tasks\
 move %startdir%BuildData %startdir%tasks\
@@ -58,12 +61,12 @@ goto start
 
 :help
 cls
-start "Buildtools Updater v.0.14-Beta | Buildtools Help" /b /wait help.bat
+start "Buildtools Updater v.%v% | Buildtools Help" /b /wait help.bat
 goto start
 
 :plugin
 cls
-start "Buildtools Updater v.0.14-Beta | Buildtools Plugin-Fixer" /b /wait plugin.bat
+start "Buildtools Updater v.%v% | Buildtools Plugin-Fixer" /b /wait plugin.bat
 goto start
 
 :bungee
@@ -106,6 +109,6 @@ cmd /c start https://github.com/git-for-windows/git/releases/download/v2.7.2.win
 
 :exit
 cls
-@echo Thanks for using BuildTools Updater v.0.14-Beta by: Legoman99573
+@echo Thanks for using BuildTools Updater v.%v% by: Legoman99573
 @pause
 exit
