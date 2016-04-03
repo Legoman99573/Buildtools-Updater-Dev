@@ -53,9 +53,9 @@ echo.
 %content% --login -i -c "curl -o tasks/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
 @echo Grabbed, and will attempt to run BuildTools.jar
 )
-goto debug
+
 start "Buildtools Updater v.%v% | Running Buildtools.jar" /b /wait tasks\run.bat
-:debug
+
 @echo Moving Buildtools Folder back to its original spot
 move %startdir%apache-maven-3.2.5 %startdir%tasks\Buildtools_Files\
 move %startdir%BuildData %startdir%tasks\Buildtools_Files\
