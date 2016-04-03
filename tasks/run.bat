@@ -10,4 +10,4 @@ for /f "delims=" %%i in ('type config\version.txt') do set version=%%i
 
 "%content%" --login -i -c "java -jar "tasks/BuildTools.jar"" -rev %version% "
 
-pause
+exit
