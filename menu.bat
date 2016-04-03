@@ -47,7 +47,11 @@ if exist %startdir%tasks\CraftBukkit (move %startdir%tasks\CraftBukkit %startdir
 if exist %startdir%tasks\Spigot (move %startdir%tasks\Spigot %startdir%) else (echo Folder "Spigot" doesnt exist may be ignored)
 if exist %startdir%tasks\work (move %startdir%tasks\work %startdir%) else (echo Folder "work" doesnt exist may be ignored)
 
-@echo running BuildTools :)
+if exist tasks\BuildTools.jar (@echo running BuildTools :)) else (@echo Buildtools.jar is missing.
+echo.
+@echo Grabbing BuildTools.jar from hub.spigotmc.org
+%content% --login -i -c "curl -o tasks/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
+@echo Grabbed, and will attempt to run BuildTools.jar)
 start "Buildtools Updater v.%v% | Running Buildtools.jar" /b /wait tasks\run.bat
 @echo Moving Buildtools Folder back to its original spot
 move %startdir%apache-maven-3.2.5 %startdir%tasks\
