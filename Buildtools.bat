@@ -26,7 +26,7 @@ for /f "delims=" %%i in ('type tasks\btuversion.txt') do set v=%%i
 If exist %content% (goto boot2) else (@echo bash.exe was not found. Download, or configure gitlocation.txt
 Goto error)
 :boot2
-@echo This build is in beta and could break important files. Continue: 
+@echo Always remeber to backup your files. Continue: 
 Set /P _1=(Y, N) || Set _1=NothingChosen
 If "%_1%"=="NothingChosen" goto :start
 If /i "%_1%"=="Y" goto start
