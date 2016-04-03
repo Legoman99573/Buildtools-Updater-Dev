@@ -2,18 +2,15 @@
 
 set startdir=%~dp0
 
-set content=
-for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
-
-set v=
-for /f "delims=" %%i in ('type tasks\btuversion.txt') do set v=%%i
-
 if exist tasks\btuversion.txt (goto setupcheck) else (powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/versions/0.15-Beta.txt -OutFile tasks/btuversion.txt
 goto setupcheck)
 
 :setupcheck
 cls
 if exist setup.bat (goto setup) else (goto boot)
+
+set v=
+for /f "delims=" %%i in ('type tasks\btuversion.txt') do set v=%%i
 
 :setup
 start "Buildtools Updater v.%v% | First Run" /b /wait setup.bat
@@ -22,6 +19,8 @@ cls
 goto boot
 
 :boot
+set content=
+for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
 If exist %content% (goto boot2) else (@echo bash.exe was not found. Download, or configure gitlocation.txt
 Goto error)
 :boot2
