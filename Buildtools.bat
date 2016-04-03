@@ -10,6 +10,7 @@ if exist setup.bat (goto setup) else (goto boot)
 :setup
 start "Buildtools Updater v.0.14-Beta | First Run" /b /wait setup.bat
 del /f setup.bat
+cls
 goto boot
 
 :boot
