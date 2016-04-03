@@ -40,12 +40,12 @@ cls
 @echo Warning: exiting while this is running may cause something to break, and not move buildtools files at the right time leaving a mess until you run this command again.
 @pause
 @echo getting Buildtools Ready
-if exist %startdir%tasks\apache-maven-3.2.5 (move %startdir%tasks\apache-maven-3.2.5 %startdir%) else (echo Folder "apache-maven-3.2.5" doesnt exist may be ignored)
-if exist %startdir%tasks\BuildData (move %startdir%tasks\BuildData %startdir%) else (echo Folder "BuildData" doesnt exist may be ignored)
-if exist %startdir%tasks\Bukkit (move %startdir%tasks\Bukkit %startdir%) else (echo Folder "Bukkit" doesnt exist may be ignored)
-if exist %startdir%tasks\CraftBukkit (move %startdir%tasks\CraftBukkit %startdir%) else (echo "Folder" CraftBukkit doesnt exist may be ignored)
-if exist %startdir%tasks\Spigot (move %startdir%tasks\Spigot %startdir%) else (echo Folder "Spigot" doesnt exist may be ignored)
-if exist %startdir%tasks\work (move %startdir%tasks\work %startdir%) else (echo Folder "work" doesnt exist may be ignored)
+if exist %startdir%tasks\Buildtools_Files\apache-maven-3.2.5 (move %startdir%tasks\Buildtools_Files\apache-maven-3.2.5 %startdir%) else (echo Folder "apache-maven-3.2.5" doesnt exist may be ignored)
+if exist %startdir%tasks\Buildtools_Files\BuildData (move %startdir%tasks\Buildtools_Files\BuildData %startdir%) else (echo Folder "BuildData" doesnt exist may be ignored)
+if exist %startdir%tasks\Buildtools_Files\Bukkit (move %startdir%tasks\Buildtools_Files\Bukkit %startdir%) else (echo Folder "Bukkit" doesnt exist may be ignored)
+if exist %startdir%tasks\Buildtools_Files\CraftBukkit (move %startdir%tasks\Buildtools_Files\CraftBukkit %startdir%) else (echo "Folder" CraftBukkit doesnt exist may be ignored)
+if exist %startdir%tasks\Buildtools_Files\Spigot (move %startdir%tasks\Buildtools_Files\Spigot %startdir%) else (echo Folder "Spigot" doesnt exist may be ignored)
+if exist %startdir%tasks\Buildtools_Files\work (move %startdir%tasks\Buildtools_Files\work %startdir%) else (echo Folder "work" doesnt exist may be ignored)
 
 if exist tasks\BuildTools.jar (@echo Running BuildTools.jar) else (@echo Buildtools.jar is missing
 echo.
@@ -53,26 +53,35 @@ echo.
 %content% --login -i -c "curl -o tasks/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
 @echo Grabbed, and will attempt to run BuildTools.jar
 )
+
 start "Buildtools Updater v.%v% | Running Buildtools.jar" /b /wait tasks\run.bat
+
 @echo Moving Buildtools Folder back to its original spot
-move %startdir%apache-maven-3.2.5 %startdir%tasks\
-move %startdir%BuildData %startdir%tasks\
-move %startdir%Bukkit %startdir%tasks\
-move %startdir%CraftBukkit %startdir%tasks\
-move %startdir%Spigot %startdir%tasks\
-move %startdir%work %startdir%tasks\
+move %startdir%apache-maven-3.2.5 %startdir%tasks\Buildtools_Files\
+move %startdir%BuildData %startdir%tasks\Buildtools_Files\
+move %startdir%Bukkit %startdir%tasks\Buildtools_Files\
+move %startdir%CraftBukkit %startdir%tasks\Buildtools_Files\
+move %startdir%Spigot %startdir%tasks\Buildtools_Files\
+move %startdir%work %startdir%tasks\Buildtools_Files\
 
 @echo Moving Server jars into folder /serverjars/
 echo.
 @echo Moving Spigot
-move spigot-*.jar %startdir%serverjars
+if exist spigot-*.jar (move spigot-*.jar %startdir%serverjars
 if exist spigot-*.jar (@echo Failed to move Spigot) else (@echo Moved Spigot service Successfully)
+) else (@echo File doesnt exist)
 echo.
+
 @echo Moving Craftbukkit
-move craftbukkit-*.jar %startdir%serverjars
+if exist craftbukkit-*.jar (move craftbukkit-*.jar %startdir%serverjars
 if exist craftbukkit-*.jar (@echo Failed to move Craftbukkit) else (@echo Moved Craftbukkit service Successfully)
+) else (@echo File doesnt exist)
+@echo.
+@echo Copying Spigot API's to api folder
+copy %startdir%tasks\Buildtools_Files\Spigot\Spigot-API\target\spigot-api-*.jar %startdir%api
 
 @echo Finished running BuildTools
+@pause
 
 goto start
 
