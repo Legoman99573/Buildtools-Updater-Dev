@@ -5,10 +5,13 @@ set startdir=%~dp0
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
 
+set v=
+for /f "delims=" %%i in ('type tasks\btuversion.txt') do set v=%%i
+
 if exist setup.bat (goto setup) else (goto boot)
 
 :setup
-start "Buildtools Updater v.0.14-Beta | First Run" /b /wait setup.bat
+start "Buildtools Updater v.%v% | First Run" /b /wait setup.bat
 del /f setup.bat
 cls
 goto boot
@@ -29,7 +32,7 @@ If /i "%_1%"=="n" goto stop
 if Exist menu.bat (goto ready) else (goto error2)
 
 :ready
-start "Buildtools Updater v.0.14-Beta" /Max /i menu.bat
+start "Buildtools Updater v.%v%" /Max /i menu.bat
 goto exit
 
 :error
