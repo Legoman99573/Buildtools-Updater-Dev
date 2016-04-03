@@ -31,13 +31,15 @@ if Exist menu.bat (goto ready) else (goto error2)
 start "Buildtools Updater v.0.14-Beta" /Max /i menu.bat
 goto exit
 
-:exit
-exit
-
 :error
 @echo Current invalid location set: %content%
-pause
+@pause
+exit
 
 :error2
 @echo Directory or file is missing. Redownload the script.
-pause
+@pause
+exit
+
+:exit
+exit
