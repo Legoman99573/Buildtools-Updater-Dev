@@ -21,6 +21,9 @@ if exist plugin-pending/ (@echo /plugin-pending exists. This can be ignored) els
 @echo Generating folder /plugin-fixed
 if exist plugin-fixed/ (@echo /plugin-pending exists. This can be ignored) else (md plugin-fixed)
 
+@echo Generating folder /serverjars
+if exist serverjars/ (@echo /serverjars exists. This can be ignored) else (md serverjars)
+
 @echo Generating folder /bungee
 if exist bungee/ (@echo /bungee exists. This can be ignored) else (md bungee)
 if exist bungee/modules/ (@echo /bungee/modules exists. This can be ignored) else (md bungee/modules)
