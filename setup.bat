@@ -1,5 +1,7 @@
 @echo off
 
+If exist config/info.txt (del /f config/info.txt)
+
 if exist config/version.txt (@echo version.txt exists. This can be ignored) else (@echo Generating config/version.txt
 powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/version.txt -OutFile config/version.txt
 )
