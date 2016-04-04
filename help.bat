@@ -10,7 +10,7 @@ echo.
 echo.
 @echo ---------------------------------------------
 echo.
-@echo run: Runs Buildtools :)
+@echo run: Runs Buildtools and saves API's
 echo.
 @echo ---------------------------------------------
 echo.
