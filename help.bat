@@ -18,6 +18,11 @@ echo.
 echo.
 @echo ---------------------------------------------
 echo.
+@echo clean: Deletes Buildtools files.
+@echo (Experimental)
+echo.
+@echo ---------------------------------------------
+echo.
 @echo plugin: Runs Plugin-Fixer
 echo.
 @echo ---------------------------------------------
