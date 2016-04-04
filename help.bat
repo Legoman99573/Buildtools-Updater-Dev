@@ -10,11 +10,16 @@ echo.
 echo.
 @echo ---------------------------------------------
 echo.
-@echo run: Runs Buildtools :)
+@echo run: Runs Buildtools and saves API's
 echo.
 @echo ---------------------------------------------
 echo.
 @echo bungee: Updates BungeeCord and its modules
+echo.
+@echo ---------------------------------------------
+echo.
+@echo clean: Deletes Buildtools files.
+@echo (Experimental)
 echo.
 @echo ---------------------------------------------
 echo.
