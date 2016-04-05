@@ -2,7 +2,7 @@
 
 set startdir=%~dp0
 
-if exist tasks\btuversion.txt (goto setupcheck) else (powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/versions/1.0.txt -OutFile tasks/btuversion.txt
+if exist tasks\btuversion.txt (goto setupcheck) else (powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/versions/1.2.txt -OutFile tasks/btuversion.txt
 goto setupcheck)
 
 :setupcheck
