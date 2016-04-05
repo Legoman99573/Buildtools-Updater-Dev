@@ -62,9 +62,9 @@ if %RESULT1%==%RESULT2% (
     @echo Making btuversion2.txt merge to btuversion.txt
     del /f tasks\btuversion.txt
     del /f tasks\btuversion2.txt
+    cls
     @echo Finished Updating to v.%v2%
     powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/btversion.txt -OutFile tasks/btuversion.txt
-    cls
 )
 @pause
 exit
