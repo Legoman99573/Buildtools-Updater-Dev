@@ -20,7 +20,7 @@ If "%_1%"=="NothingChosen" goto :commandnotfound
 If /i "%_1%"=="update" goto update
 If /i "%_1%"=="run" goto run
 If /i "%_1%"=="help" goto start
-If /i "%_1%"=="clear" goto clear
+If /i "%_1%"=="clean" goto clean
 If /i "%_1%"=="plugin" goto plugin
 If /i "%_1%"=="bungee" goto bungee
 If /i "%_1%"=="exit" goto exit
@@ -97,16 +97,16 @@ cls
 start "Buildtools Updater v.%v% | Buildtools Help" /b /wait help.bat
 goto start
 
-:clear
+:clean
 cls
 @echo Are you sure you want to clear all of Buildtools Files
 Set /P "_clear=(Y, N)" || Set _clear=NothingChosen
-If "%_clear%"=="NothingChosen" goto :commandnotfound
-If /i "%_clear%"=="Y" goto clearrun.
-If /i "%_clear%"=="y" goto clearrun
+If "%_clear%"=="NothingChosen" goto start
+If /i "%_clear%"=="Y" goto cleanrun
+If /i "%_clear%"=="y" goto cleanrun
 If /i "%_clear%"=="N" goto start
 If /i "%_clear%"=="n" goto start
-:clearrun
+:cleanrun
 @echo Deleting every folder in %startdir%Buildtools_Files\
 rd /q tasks\Buildtools_Files
 md tasks\Buildtools_Files
