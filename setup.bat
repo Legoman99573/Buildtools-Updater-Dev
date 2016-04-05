@@ -1,6 +1,6 @@
 @echo off
 
-If exist config/info.txt (del /f config/info.txt)
+if exist config/ (@echo Found config folder) else (md config)
 
 if exist config/version.txt (@echo version.txt exists. This can be ignored) else (@echo Generating config/version.txt
 powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/version.txt -OutFile config/version.txt
@@ -31,17 +31,17 @@ if exist bungee/ (@echo /bungee exists. This can be ignored) else (md bungee)
 if exist bungee/modules/ (@echo /bungee/modules exists. This can be ignored) else (md bungee/modules)
 
 @echo Generating folder /api
-if exist api/ (@echtasks exists. This can be ignored) else (md api)
+if exist api/ (@echo tasks exists. This can be ignored) else (md api)
 
 if exist logs/ (@echo /logs exists. This can be ignored) else (md logs)
 
-if exist tasks/Buildtools_Files (@echo Folder exists. This can be ignored) else (md tasks/Buildtools_Files)
+if exist tasks/Buildtools_Files/ (@echo Folder exists. This can be ignored) else (md tasks/Buildtools_Files)
 
 @echo finished Generating all folders.
 
 If exist tasks/apache-maven-3.2.5/ (move tasks\apache-maven-3.2.5 tasks\Buildtools_Files\)
 
-If exist tasks/BuildData/ (move tasks\BuildData tasks\Buildtools_Files\).
+If exist tasks/BuildData/ (move tasks\BuildData tasks\Buildtools_Files\)
 
 If exist tasks/Bukkit/ (move tasks\Bukkit tasks\Buildtools_Files\)
 
