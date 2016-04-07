@@ -1,38 +1,45 @@
 @echo off
-color 02
 echo.
-@echo ================ {Command List} ================
+call:echo_green "@echo ================ {Command List} ================"
 echo.
-@echo update: Updates Buildtools to latest version
+call:echo_darkyellow "@echo update: Updates Buildtools to latest version"
 echo.
-@echo ------------------------------------------------
+call:echo_green "@echo ------------------------------------------------"
 echo.
-@echo help: Just added it if you want to spam it lol
+call:echo_darkyellow "@echo help: Just added it if you want to spam it lol"
 echo.
-@echo ------------------------------------------------
+call:echo_green "@echo ------------------------------------------------"
 echo.
-@echo run: Runs Buildtools and saves API's
+call:echo_darkyellow "@echo run: Runs Buildtools and saves APIs"
 echo.
-@echo ------------------------------------------------
+call:echo_green "@echo ------------------------------------------------"
 echo.
-@echo bungee: Updates BungeeCord and its modules
+call:echo_darkyellow "@echo bungee: Updates BungeeCord and its modules"
 echo.
-@echo ------------------------------------------------
+call:echo_green "@echo ------------------------------------------------"
 echo.
-@echo clean: Deletes Buildtools files.
+call:echo_darkyellow "@echo clean: Deletes Buildtools files"
 echo.
-@echo ------------------------------------------------
+call:echo_green "@echo ------------------------------------------------"
 echo.
-@echo plugin: Runs Plugin-Fixer
+call:echo_darkyellow "@echo plugin: Runs Plugin-Fixer"
 echo.
-@echo ------------------------------------------------
+call:echo_green "@echo ------------------------------------------------"
 echo.
-@echo btupdate: Updates this script
+call:echo_darkyellow "@echo btupdate: Updates this script"
 echo.
-@echo ------------------------------------------------
+call:echo_green "@echo ------------------------------------------------"
 echo.
-@echo exit: Shuts Down Program
+call:echo_darkyellow "@echo exit: Shuts Down Program"
 echo.
-@echo ================ {Command List} ================
+call:echo_green "@echo ================ {Command List} ================"
 echo.
 exit
+
+:echo_darkyellow
+%Windir%\System32\WindowsPowerShell\v1.0\Powershell.exe write-host -foregroundcolor DarkYellow %1
+goto:eof
+
+:echo_green
+%Windir%\System32\WindowsPowerShell\v1.0\Powershell.exe write-host -foregroundcolor green %1
+goto:eof
