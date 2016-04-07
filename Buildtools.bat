@@ -27,24 +27,9 @@ if exist config/autoupdate.txt (set string=true
 type "config/autoupdate.txt" | find "%string%" > nul
 if ErrorLevel 1 (
   goto startup
-) else (
-findstr /c:"%v%" /i tasks\btuversion.txt
-set RESULT1=%ERRORLEVEL%
-echo.
-echo.
-@echo Current Update Version.
-findstr /c:"%v%" /i tasks\btuversion2.txt
-set RESULT2=%ERRORLEVEL%
-set v2=
-for /f "delims=" %%i in ('type tasks\btuversion2.txt') do set v2=%%i
-echo.
-cls
-if %RESULT1%==%RESULT2% (
-  del /f tasks\btuversion2.txt
-  goto startup
-)
+  ) else (
   goto autoupdate
-)
+  )
 :startup
 cls
 If exist %content% (goto boot2) else (@echo bash.exe was not found. Download, or configure gitlocation.txt
@@ -77,6 +62,7 @@ exit
 
 :autoupdate
 start "Buildtools Updater | Update Checker" tasks\update.bat
+exit
 
 :exit
 exit
