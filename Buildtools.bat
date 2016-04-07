@@ -2,7 +2,7 @@
 
 set startdir=%~dp0
 
-if exist tasks\btuversion.txt (goto setupcheck) else (powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/versions/1.2.txt -OutFile tasks/btuversion.txt
+if exist tasks\btuversion.txt (goto setupcheck) else (powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/versions/1.3.txt -OutFile tasks/btuversion.txt
 goto setupcheck)
 
 :setupcheck
@@ -11,7 +11,7 @@ if exist tasks/setup.bat (goto setup) else (goto boot)
 
 :setup
 start "Buildtools Updater v.%v% | First Run" /b /wait tasks\setup.bat
-del /f setup.bat
+del /f tasks\setup.bat
 cls
 goto boot
 
@@ -23,10 +23,34 @@ for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
 set v=
 for /f "delims=" %%i in ('type tasks\btuversion.txt') do set v=%%i
 
+if exist config/autoupdate.txt (set string=true
+type "config/autoupdate.txt" | find "%string%" > nul
+if ErrorLevel 1 (
+  goto startup
+) else (
+findstr /c:"%v%" /i tasks\btuversion.txt
+set RESULT1=%ERRORLEVEL%
+echo.
+echo.
+@echo Current Update Version.
+findstr /c:"%v%" /i tasks\btuversion2.txt
+set RESULT2=%ERRORLEVEL%
+set v2=
+for /f "delims=" %%i in ('type tasks\btuversion2.txt') do set v2=%%i
+echo.
+cls
+if %RESULT1%==%RESULT2% (
+  del /f tasks\btuversion2.txt
+  goto startup
+)
+  goto autoupdate
+)
+:startup
+cls
 If exist %content% (goto boot2) else (@echo bash.exe was not found. Download, or configure gitlocation.txt
 Goto error)
 :boot2
-@echo Always remeber to backup your files. Continue: 
+@echo Always remeber to backup your files during updates/beta updates. Continue: 
 Set /P _1=(Y, N) || Set _1=NothingChosen
 If "%_1%"=="NothingChosen" goto :start
 If /i "%_1%"=="Y" goto start
@@ -50,6 +74,9 @@ exit
 @echo Directory or file is missing. Redownload the script.
 @pause
 exit
+
+:autoupdate
+start "Buildtools Updater | Update Checker" tasks\update.bat
 
 :exit
 exit
