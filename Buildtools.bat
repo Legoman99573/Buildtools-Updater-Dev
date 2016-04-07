@@ -7,10 +7,10 @@ goto setupcheck)
 
 :setupcheck
 cls
-if exist setup.bat (goto setup) else (goto boot)
+if exist tasks/setup.bat (goto setup) else (goto boot)
 
 :setup
-start "Buildtools Updater v.%v% | First Run" /b /wait setup.bat
+start "Buildtools Updater v.%v% | First Run" /b /wait tasks\setup.bat
 del /f setup.bat
 cls
 goto boot
