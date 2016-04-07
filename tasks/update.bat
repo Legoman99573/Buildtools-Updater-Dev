@@ -1,5 +1,9 @@
 @echo off
 
+if exist tasks/update.bat (goto run) else (goto exit)
+
+:run
+
 set v=
 for /f "delims=" %%i in ('type tasks\btuversion.txt') do set v=%%i
 
@@ -66,5 +70,6 @@ if %RESULT1%==%RESULT2% (
     @echo Finished Updating to v.%v2%
     powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/btversion.txt -OutFile tasks/btuversion.txt
 )
+:exit
 @pause
 exit
