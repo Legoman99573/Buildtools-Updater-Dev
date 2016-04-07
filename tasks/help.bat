@@ -29,6 +29,10 @@ echo.
 echo.
 @echo exit: Shuts Down Program
 echo.
+@echo ---------------------------------------------
+echo.
+@echo btupdate: Updates this script
+echo.
 @echo ================ {Help Menu} ================
 echo.
 exit
