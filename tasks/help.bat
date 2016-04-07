@@ -1,4 +1,5 @@
 @echo off
+color 02
 echo.
 @echo ================ {Command List} ================
 echo.
