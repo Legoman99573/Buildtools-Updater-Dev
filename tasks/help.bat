@@ -19,7 +19,6 @@ echo.
 @echo ---------------------------------------------
 echo.
 @echo clean: Deletes Buildtools files.
-@echo (Experimental)
 echo.
 @echo ---------------------------------------------
 echo.
@@ -27,11 +26,11 @@ echo.
 echo.
 @echo ---------------------------------------------
 echo.
-@echo exit: Shuts Down Program
+@echo btupdate: Updates this script
 echo.
 @echo ---------------------------------------------
 echo.
-@echo btupdate: Updates this script
+@echo exit: Shuts Down Program
 echo.
 @echo ================ {Help Menu} ================
 echo.
