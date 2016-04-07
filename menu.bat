@@ -13,7 +13,7 @@ if exist %content% (goto boot) else (goto error1)
 @echo Welcome to Buildtools Updater v.%v%
 :start
 cls
-start "Buildtools Updater v.%v% | Buildtools Help" /b /wait help.bat
+start "Buildtools Updater v.%v% | Buildtools Help" /b /wait tasks\help.bat
 :commanderror
 Set /P "_1=>" || Set _1=NothingChosen
 If "%_1%"=="NothingChosen" goto :commandnotfound
@@ -92,11 +92,6 @@ copy %startdir%tasks\Buildtools_Files\Spigot\Spigot-API\target\spigot-api-*.jar 
 
 goto start
 
-:help
-cls
-start "Buildtools Updater v.%v% | Buildtools Help" /b /wait help.bat
-goto start
-
 :clean
 cls
 @echo Are you sure you want to clear all of Buildtools Files
@@ -115,7 +110,7 @@ goto start
 
 :plugin
 cls
-start "Buildtools Updater v.%v% | Buildtools Plugin-Fixer" /b /wait plugin.bat
+start "Buildtools Updater v.%v% | Buildtools Plugin-Fixer" /b /wait tasks\plugin.bat
 goto start
 
 :bungee
