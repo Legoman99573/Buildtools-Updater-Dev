@@ -26,7 +26,7 @@ if %RESULT1%==%RESULT2% (
     echo No Updates available.
     del /f tasks\btuversion2.txt
 ) else (
-    echo Found an update. v.%v%. Do you want to Update:
+    echo Found an update. v.%v2%. Do you want to Update:
     echo Deleting old files and placing new ones in.
     echo Deleting Buildtools.bat
     del /f Buildtools.bat
@@ -62,9 +62,9 @@ if %RESULT1%==%RESULT2% (
     @echo Making btuversion2.txt merge to btuversion.txt
     del /f tasks\btuversion.txt
     del /f tasks\btuversion2.txt
-    powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/btversion.txt -OutFile tasks/btuversion.txt
     cls
-    @echo Finished Updating to v.%v%
+    @echo Finished Updating to v.%v2%
+    powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/btversion.txt -OutFile tasks/btuversion.txt
 )
 @pause
 exit
