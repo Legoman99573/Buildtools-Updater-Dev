@@ -72,7 +72,7 @@ If exist license.file (move license.file license\)
 If exist README.md (move README.md license\)
 
 @echo Updating update.bat
-del /f update.bat
-powershell -command Invoke-WebRequest -Uri https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater-Dev/master/update.bat -OutFile update.bat
+del /f tasks\update.bat
+powershell -command Invoke-WebRequest -Uri https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater-Dev/master/update.bat -OutFile tasks\update.bat
 
 exit
