@@ -6,9 +6,7 @@ if exist tasks/setup.bat (goto run) else (exit)
 
 if exist config/ (@echo Found config folder) else (md config)
 
-if exist config/version.txt (@echo version.txt exists. This can be ignored) else (@echo Generating config/version.txt
-powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/version.txt -OutFile config/version.txt
-)
+if exist config/version.txt (del /f config\version.txt)
 
 if exist config/gitlocation.txt (@echo gitlocation.txt exists. This can be ignored) else (@echo Generating config/gitlocation.txt
 powershell -command Invoke-WebRequest -Uri http://thegearmc.com/update/gitlocation.txt -OutFile config/gitlocation.txt
