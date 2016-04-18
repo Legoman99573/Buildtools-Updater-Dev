@@ -22,7 +22,7 @@ call:echo_red "@echo Must select a version number. If version number isnt implem
 goto beginning
 
 :latest
-"%content%" --login -i -c "java -jar "tasks/BuildTools.jar"" -rev latest "
+"%content%" --login -i -c "cd buildtools_files ; java -jar "tasks/BuildTools.jar"" -rev latest "
 goto exit
 
 :1.9.2
